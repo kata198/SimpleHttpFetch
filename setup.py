@@ -25,10 +25,10 @@ if __name__ == '__main__':
             maintainer='Tim Savannah',
             url='https://github.com/kata198/SimpleHttpFetch',
             maintainer_email='kata198@gmail.com',
-            description=short_description
+            description=short_description,
             long_description=long_description,
             license='LGPLv2',
-            keywords=['fetch', 'url', 'GET', 'http', 'html', 'https', 'string', 'json', 'dict', 'as', 'simple', 'easy', 'basic', 'request', 'method', 'str', 'fetchUrl', 'fetchUrlAsJson', 'redirect']
+            keywords=['fetch', 'url', 'GET', 'http', 'html', 'https', 'string', 'json', 'dict', 'as', 'simple', 'easy', 'basic', 'request', 'method', 'str', 'fetchUrl', 'fetchUrlAsJson', 'redirect'],
             classifiers=['Development Status :: 5 - Production/Stable',
                          'Programming Language :: Python',
                          'License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)',
