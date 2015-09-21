@@ -1,0 +1,175 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: package SimpleHttpFetch</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>SimpleHttpFetch</strong></big></big> (version 1.0.0)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><br></font></td></tr></table>
+    <p><tt>#&nbsp;Copyright&nbsp;(c)&nbsp;2015&nbsp;Tim&nbsp;Savannah&nbsp;under&nbsp;terms&nbsp;of&nbsp;LGPLv2.<br>
+#<br>
+#&nbsp;&nbsp;SimpleHttpFetch&nbsp;supports&nbsp;through&nbsp;the&nbsp;most&nbsp;simple&nbsp;interface&nbsp;possible&nbsp;fetching&nbsp;of&nbsp;URLs&nbsp;as&nbsp;strings&nbsp;or&nbsp;JSON&nbsp;as&nbsp;dict</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Package Contents</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="exceptions.html#Exception">exceptions.Exception</a>(<a href="exceptions.html#BaseException">exceptions.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="SimpleHttpFetch.html#SimpleHttpFetchBadStatus">SimpleHttpFetchBadStatus</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SimpleHttpFetchBadStatus">class <strong>SimpleHttpFetchBadStatus</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="exceptions.html#Exception">Exception</a>&nbsp;that&nbsp;is&nbsp;raised&nbsp;when&nbsp;a&nbsp;non-200&nbsp;(Success)&nbsp;code&nbsp;is&nbsp;received&nbsp;from&nbsp;upstream&nbsp;server.&nbsp;This&nbsp;is&nbsp;not&nbsp;including&nbsp;301&nbsp;(redirects).<br>
+&nbsp;<br>
+Has&nbsp;a&nbsp;member&nbsp;"statusCode"&nbsp;which&nbsp;will&nbsp;list&nbsp;the&nbsp;status&nbsp;code&nbsp;returned.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="SimpleHttpFetch.html#SimpleHttpFetchBadStatus">SimpleHttpFetchBadStatus</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SimpleHttpFetchBadStatus-__init__"><strong>__init__</strong></a>(self, msg, statusCode)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#SimpleHttpFetchBadStatus-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="SimpleHttpFetchBadStatus-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchBadStatus-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchBadStatus-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchBadStatus-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchBadStatus-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchBadStatus-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchBadStatus-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchBadStatus-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchBadStatus-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="SimpleHttpFetchBadStatus-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchBadStatus-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchBadStatus-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchBadStatus-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchBadStatus-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="SimpleHttpFetchBadStatus-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchBadStatus-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchBadStatus-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-fetchUrl"><strong>fetchUrl</strong></a>(url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 1.0.0'</font>)</dt><dd><tt>fetchUrl&nbsp;-&nbsp;Fetches&nbsp;the&nbsp;contents&nbsp;of&nbsp;a&nbsp;url.<br>
+&nbsp;<br>
+Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
+&nbsp;<br>
+@param&nbsp;httpMethod&nbsp;&lt;str&gt;&nbsp;-&nbsp;HTTP&nbsp;Method&nbsp;(default&nbsp;GET)<br>
+@param&nbsp;userAgent&nbsp;&lt;str&gt;&nbsp;&nbsp;-&nbsp;User&nbsp;agent&nbsp;to&nbsp;provide,&nbsp;defaults&nbsp;to&nbsp;SimpleHttpFetch&nbsp;&lt;version&gt;<br>
+&nbsp;<br>
+@return&nbsp;&lt;str&gt;&nbsp;-&nbsp;Web&nbsp;page&nbsp;contents<br>
+&nbsp;<br>
+@raises&nbsp;<a href="#SimpleHttpFetchBadStatus">SimpleHttpFetchBadStatus</a>&nbsp;If&nbsp;page&nbsp;does&nbsp;not&nbsp;return&nbsp;status&nbsp;200&nbsp;(success)</tt></dd></dl>
+ <dl><dt><a name="-fetchUrlAsJson"><strong>fetchUrlAsJson</strong></a>(url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 1.0.0'</font>)</dt><dd><tt>fetchUrl&nbsp;-&nbsp;Fetches&nbsp;the&nbsp;contents&nbsp;of&nbsp;a&nbsp;url&nbsp;and&nbsp;converts&nbsp;the&nbsp;JSON&nbsp;to&nbsp;a&nbsp;python&nbsp;dictionary.<br>
+&nbsp;<br>
+Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
+&nbsp;<br>
+@param&nbsp;httpMethod&nbsp;&lt;str&gt;&nbsp;-&nbsp;HTTP&nbsp;Method&nbsp;(default&nbsp;GET)<br>
+@param&nbsp;userAgent&nbsp;&lt;str&gt;&nbsp;&nbsp;-&nbsp;User&nbsp;agent&nbsp;to&nbsp;provide,&nbsp;defaults&nbsp;to&nbsp;SimpleHttpFetch&nbsp;&lt;version&gt;<br>
+&nbsp;<br>
+@return&nbsp;&lt;dict&gt;&nbsp;-&nbsp;Dictionary&nbsp;of&nbsp;parsed&nbsp;JSON&nbsp;on&nbsp;page<br>
+&nbsp;<br>
+@raises&nbsp;ValueError&nbsp;if&nbsp;webpage&nbsp;contents&nbsp;are&nbsp;not&nbsp;JSON-compatible<br>
+@raises&nbsp;<a href="#SimpleHttpFetchBadStatus">SimpleHttpFetchBadStatus</a>&nbsp;If&nbsp;page&nbsp;does&nbsp;not&nbsp;return&nbsp;status&nbsp;200&nbsp;(success)</tt></dd></dl>
+ <dl><dt><a name="-getConnection"><strong>getConnection</strong></a>(url)</dt><dd><tt>getConnection&nbsp;-&nbsp;Get&nbsp;a&nbsp;connection&nbsp;object&nbsp;given&nbsp;a&nbsp;url.&nbsp;Supports&nbsp;http&nbsp;and&nbsp;https<br>
+&nbsp;<br>
+@return&nbsp;-&nbsp;Connection</tt></dd></dl>
+ <dl><dt><a name="-getRequestData"><strong>getRequestData</strong></a>(connection, url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 1.0.0'</font>)</dt><dd><tt>getRequestData&nbsp;-&nbsp;Given&nbsp;a&nbsp;connection,&nbsp;fetch&nbsp;a&nbsp;URL&nbsp;and&nbsp;return&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;contents.&nbsp;Use&nbsp;this&nbsp;to&nbsp;make&nbsp;multiple&nbsp;requests&nbsp;instead&nbsp;of&nbsp;fetchUrl&nbsp;to&nbsp;the&nbsp;same&nbsp;server,&nbsp;as&nbsp;it&nbsp;allows&nbsp;you&nbsp;to&nbsp;reuse&nbsp;a&nbsp;connection.<br>
+&nbsp;<br>
+Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
+&nbsp;<br>
+@param&nbsp;connection&nbsp;&lt;obj&gt;&nbsp;-&nbsp;return&nbsp;of&nbsp;getConnection&nbsp;function<br>
+@parma&nbsp;url&nbsp;&lt;str&gt;&nbsp;-&nbsp;Url&nbsp;to&nbsp;fetch<br>
+@param&nbsp;httpMethod&nbsp;&lt;str&gt;&nbsp;-&nbsp;An&nbsp;http&nbsp;method.&nbsp;Probably&nbsp;GET.<br>
+@param&nbsp;userAgent&nbsp;&lt;str&gt;&nbsp;&nbsp;-&nbsp;Your&nbsp;user&nbsp;agent.&nbsp;Defaults&nbsp;to&nbsp;SimpleHttpFetch&nbsp;&lt;version&gt;<br>
+&nbsp;<br>
+@return&nbsp;&lt;str&gt;&nbsp;-&nbsp;Web&nbsp;page&nbsp;contents<br>
+&nbsp;<br>
+@raises&nbsp;<a href="#SimpleHttpFetchBadStatus">SimpleHttpFetchBadStatus</a>&nbsp;If&nbsp;page&nbsp;does&nbsp;not&nbsp;return&nbsp;status&nbsp;200&nbsp;(success)</tt></dd></dl>
+ <dl><dt><a name="-getRequestDataAsJson"><strong>getRequestDataAsJson</strong></a>(connection, url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 1.0.0'</font>)</dt><dd><tt>getRequestDataAsJson&nbsp;-&nbsp;Given&nbsp;a&nbsp;connection,&nbsp;fetch&nbsp;a&nbsp;URL&nbsp;and&nbsp;return&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;contents.&nbsp;Use&nbsp;this&nbsp;to&nbsp;make&nbsp;multiple&nbsp;requests&nbsp;to&nbsp;the&nbsp;same&nbsp;server&nbsp;instead&nbsp;of&nbsp;fetchUrlAsJson,&nbsp;as&nbsp;it&nbsp;allows&nbsp;you&nbsp;to&nbsp;reuse&nbsp;a&nbsp;connection.<br>
+&nbsp;<br>
+Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
+&nbsp;<br>
+@param&nbsp;connection&nbsp;&lt;obj&gt;&nbsp;-&nbsp;Return&nbsp;of&nbsp;getConnection&nbsp;function<br>
+@param&nbsp;url&nbsp;&lt;str&gt;&nbsp;-&nbsp;Url&nbsp;to&nbsp;fetch<br>
+@param&nbsp;httpMethod&nbsp;&lt;str&gt;&nbsp;-&nbsp;An&nbsp;http&nbsp;method.&nbsp;Probably&nbsp;GET.<br>
+@param&nbsp;userAgent&nbsp;&lt;str&gt;&nbsp;-&nbsp;Your&nbsp;user&nbsp;agent.&nbsp;Defaults&nbsp;to&nbsp;SimpleHttpFetch&nbsp;&lt;version&gt;<br>
+&nbsp;<br>
+@return&nbsp;&lt;dict&gt;&nbsp;-&nbsp;Dictionary&nbsp;of&nbsp;parsed&nbsp;JSON&nbsp;on&nbsp;page<br>
+&nbsp;<br>
+@raises&nbsp;ValueError&nbsp;if&nbsp;webpage&nbsp;contents&nbsp;are&nbsp;not&nbsp;JSON-compatible<br>
+@raises&nbsp;<a href="#SimpleHttpFetchBadStatus">SimpleHttpFetchBadStatus</a>&nbsp;If&nbsp;page&nbsp;does&nbsp;not&nbsp;return&nbsp;status&nbsp;200&nbsp;(success)</tt></dd></dl>
+ <dl><dt><a name="-parseURL"><strong>parseURL</strong></a>(url)</dt><dd><tt>parseURL&nbsp;-&nbsp;parses&nbsp;a&nbsp;url&nbsp;and&nbsp;returns&nbsp;a&nbsp;dictionary&nbsp;containing&nbsp;the&nbsp;pieces&nbsp;of&nbsp;information<br>
+&nbsp;<br>
+@param&nbsp;url&nbsp;&lt;string&gt;&nbsp;-&nbsp;A&nbsp;full&nbsp;URL&nbsp;(ex:&nbsp;<a href="http://www.example.com/test">http://www.example.com/test</a>)<br>
+&nbsp;<br>
+@return&nbsp;-&nbsp;Dictionary&nbsp;describing&nbsp;url.&nbsp;Keys&nbsp;are:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;protocol&nbsp;&lt;string&gt;&nbsp;-&nbsp;http&nbsp;or&nbsp;https<br>
+&nbsp;&nbsp;&nbsp;&nbsp;domain&nbsp;&nbsp;&nbsp;&lt;string&gt;&nbsp;-&nbsp;host&nbsp;domain/server&nbsp;(ex:&nbsp;example.com)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;int&gt;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;TCP&nbsp;Port&nbsp;for&nbsp;request<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rel_uri&nbsp;&nbsp;&lt;string&gt;&nbsp;-&nbsp;Relative&nbsp;URI&nbsp;of&nbsp;request&nbsp;(ex:&nbsp;/index.html)</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ('SimpleHttpFetchBadStatus', 'parseURL', 'getConnection', 'getRequestData', 'getRequestDataAsJson', 'fetchUrl', 'fetchUrlAsJson')<br>
+<strong>__version__</strong> = '1.0.0'<br>
+<strong>__version_tuple__</strong> = (1, 0, 0)</td></tr></table>
+</body></html>

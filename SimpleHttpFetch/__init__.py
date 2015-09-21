@@ -1,15 +1,16 @@
 # Copyright (c) 2015 Tim Savannah under terms of LGPLv2.
 #
 #  SimpleHttpFetch supports through the most simple interface possible fetching of URLs as strings or JSON as dict
+
+
 try:
     import httplib  # python2
 except ImportError:
     import http.client as httplib # python3
 
-import re
 import json
+import re
 
-HTTP_PROTOCOL_URL_PATTERN = re.compile('^(?P<protocol>[h][t][t][p][s]{0,1}[:][/]{2}){0,1}(?P<domain>[a-zA-Z0-9\.]+){1}(?P<port>:[\d]+){0,1}(?P<rel_uri>[/].*){0,1}$')
 
 __all__ = ('SimpleHttpFetchBadStatus', 'parseURL', 'getConnection', 'getRequestData', 'getRequestDataAsJson', 'fetchUrl', 'fetchUrlAsJson')
 
@@ -17,10 +18,14 @@ __version__ = '1.0.0'
 
 __version_tuple__ = (1, 0, 0)
 
-DEFAULT_USER_AGENT='SimpleHttpFetch %s' %(__version__,)
+DEFAULT_USER_AGENT = 'SimpleHttpFetch %s' %(__version__,)
 
-class SimpleHttpFetchBadStatus(Exception):
-    pass
+HTTP_PROTOCOL_URL_PATTERN = re.compile('^(?P<protocol>[h][t][t][p][s]{0,1}[:][/]{2}){0,1}(?P<domain>[a-zA-Z0-9\.]+){1}(?P<port>:[\d]+){0,1}(?P<rel_uri>[/].*){0,1}$')
+
+
+############################
+#   Methods                #
+############################
 
 
 def parseURL(url):
@@ -60,7 +65,7 @@ def parseURL(url):
 
 def getConnection(url):
     '''
-        getConnection - Get a connection given a url
+        getConnection - Get a connection object given a url. Supports http and https
 
         @return - Connection
     '''
@@ -76,7 +81,8 @@ def getConnection(url):
 def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
     '''
         getRequestData - Given a connection, fetch a URL and return a string of the contents. Use this to make multiple requests instead of fetchUrl to the same server, as it allows you to reuse a connection.
-            Will follow redirects (301)
+        
+        Will follow relative redirects via Location header or 301 status.
 
         @param connection <obj> - return of getConnection function
         @parma url <str> - Url to fetch
@@ -118,7 +124,8 @@ def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGE
 def getRequestDataAsJson(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
     '''
         getRequestDataAsJson - Given a connection, fetch a URL and return a string of the contents. Use this to make multiple requests to the same server instead of fetchUrlAsJson, as it allows you to reuse a connection.
-            Will follow redirects (301)
+        
+        Will follow relative redirects via Location header or 301 status.
 
         @param connection <obj> - Return of getConnection function
         @param url <str> - Url to fetch
@@ -146,6 +153,8 @@ def fetchUrl(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
     '''
         fetchUrl - Fetches the contents of a url.
 
+        Will follow relative redirects via Location header or 301 status.
+
         @param httpMethod <str> - HTTP Method (default GET)
         @param userAgent <str>  - User agent to provide, defaults to SimpleHttpFetch <version>
 
@@ -161,6 +170,8 @@ def fetchUrlAsJson(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
     '''
         fetchUrl - Fetches the contents of a url and converts the JSON to a python dictionary.
 
+        Will follow relative redirects via Location header or 301 status.
+
         @param httpMethod <str> - HTTP Method (default GET)
         @param userAgent <str>  - User agent to provide, defaults to SimpleHttpFetch <version>
 
@@ -172,4 +183,20 @@ def fetchUrlAsJson(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
     connection = getConnection(url)
 
     return getRequestDataAsJson(connection, url, httpMethod, userAgent)
+
+
+############################
+#   Exceptions             #
+############################
+
+class SimpleHttpFetchBadStatus(Exception):
+    '''
+        Exception that is raised when a non-200 (Success) code is received from upstream server. This is not including 301 (redirects).
+
+        Has a member "statusCode" which will list the status code returned.
+    '''
+
+    def __init__(self, msg, statusCode):
+        Exception.__init__(self, msg)
+        self.statusCode = statusCode
 
