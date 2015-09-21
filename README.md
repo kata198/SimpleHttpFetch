@@ -28,7 +28,7 @@ Fetch a servlet that returns JSON from example.com over HTTP, and convert to a p
 
 	import SimpleHttpFetch
 
-	jsonContents = SimpleHttpFetch.fetchUrlAsJson('https://www.example.com/myJsonServlet?username=myuser')
+	jsonContents = SimpleHttpFetch.fetchUrlAsJson('http://www.example.com/myJsonServlet?username=myuser')
 
 
 So simple!
