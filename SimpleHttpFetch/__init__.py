@@ -111,7 +111,7 @@ def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGE
             response.read() # Clear buffer if present
         except:
             pass
-        toRaise = SimpleHttpFetchBadStatus('Got non-200 response from upstream server [%s]: (%d) %s' %(url, response.status, response.reason))
+        toRaise = SimpleHttpFetchBadStatus('Got non-200 response from upstream server [%s]: (%d) %s' %(url, response.status, response.reason), response.status, response.reason)
         toRaise.statusCode = response.status
         raise toRaise
 
@@ -196,7 +196,8 @@ class SimpleHttpFetchBadStatus(Exception):
         Has a member "statusCode" which will list the status code returned.
     '''
 
-    def __init__(self, msg, statusCode):
+    def __init__(self, msg, statusCode=None, reason=None):
         Exception.__init__(self, msg)
         self.statusCode = statusCode
+        self.reason = reason
 
