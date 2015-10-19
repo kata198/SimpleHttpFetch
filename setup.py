@@ -3,29 +3,34 @@
 import os
 from setuptools import setup
 
-short_description = "Python module that will, in a single line, fetch an http/https url and return a string or dictionary (JSON)"
-
-try:
-    dirName = os.path.dirname(__file__)
-    if dirName and os.getcwd() != dirName:
-        os.chdir(dirName)
-
-    with open('README.rst', 'r') as f:
-        long_description = f.read()
-except:
-    long_description = short_description
 
 if __name__ == '__main__':
 
+    summary = "Python module that will, in a single line, fetch an http/https url and return a string or dictionary (JSON)"
+
+    try:
+        dirName = os.path.dirname(__file__)
+        if dirName and os.getcwd() != dirName:
+            os.chdir(dirName)
+    except:
+        pass
+
+    try:
+        with open('README.rst', 'rt') as f:
+            long_description = f.read()
+    except Exception as e:
+        sys.stderr.write('Error reading long description: %s\n' %(str(e),))
+        long_description = summary
+
     setup(name='SimpleHttpFetch',
-            version='1.0.0',
+            version='1.0.1',
             packages=['SimpleHttpFetch'],
             author='Tim Savannah',
             author_email='kata198@gmail.com',
             maintainer='Tim Savannah',
             url='https://github.com/kata198/SimpleHttpFetch',
             maintainer_email='kata198@gmail.com',
-            description=short_description,
+            description=summary,
             long_description=long_description,
             license='LGPLv2',
             keywords=['fetch', 'url', 'GET', 'http', 'html', 'https', 'string', 'json', 'dict', 'as', 'simple', 'easy', 'basic', 'request', 'method', 'str', 'fetchUrl', 'fetchUrlAsJson', 'redirect'],
