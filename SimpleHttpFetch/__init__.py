@@ -96,7 +96,7 @@ def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGE
     if not url.startswith('/'):
         url = parseURL(url)['rel_uri']
 
-    connection.request(httpMethod, url, [],{'User-agent': 'FetchURL'})
+    connection.request(httpMethod, url, '',{'User-agent': 'FetchURL'})
     response = connection.getresponse()
     if response.status == 301:
         try:
