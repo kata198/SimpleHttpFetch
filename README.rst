@@ -37,6 +37,14 @@ Fetch a servlet that returns JSON from example.com over HTTP, and convert to a p
 
 So simple!
 
+Fetch the linux kernel, do not try to decode into text.:
+
+	import SimpleHttpFetch
+
+
+	kernel = SimpleHttpFetch.fetchUrlRaw('https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.4.1.tar.xz')
+
+
 
 Encodings
 ---------
