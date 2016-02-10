@@ -23,7 +23,7 @@ if __name__ == '__main__':
         long_description = summary
 
     setup(name='SimpleHttpFetch',
-            version='1.1.2',
+            version='2.0.0',
             packages=['SimpleHttpFetch'],
             author='Tim Savannah',
             author_email='kata198@gmail.com',

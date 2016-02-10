@@ -34,7 +34,18 @@ Fetch a servlet that returns JSON from example.com over HTTP, and convert to a p
 So simple!
 
 
+Encodings
+---------
+
+SimpleHttpFetch will check for the "charset" defined in Content-type header, and use that as the encoding. If that is not found, it will use the "defaultEncoding" param, which defaults to utf-8. 
+
+
+**Binary Data**
+
+To fetch binary data, use the "fetchUrlRaw" method, or pass "nodecode" as the "defaultEncoding" paramater. Use this mode to fetch images, video, tarballs, etc.
+
+
 Full Documentation
 ------------------
 
-Full documentation on other methods and arguments can be found here:  http://htmlpreview.github.io/?https://github.com/kata198/SimpleHttpFetch/blob/master/doc/SimpleHttpFetch.html .
+Full documentation on other methods and arguments can be found here:  http://htmlpreview.github.io/?https://github.com/kata198/SimpleHttpFetch/blob/master/doc/SimpleHttpFetch.html?vers=2 .

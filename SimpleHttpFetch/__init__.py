@@ -1,4 +1,4 @@
-# Copyright (c) 2015 Tim Savannah under terms of LGPLv2.
+# Copyright (c) 2015-2016 Tim Savannah under terms of LGPLv2.
 #
 #  SimpleHttpFetch supports through the most simple interface possible fetching of URLs as strings or JSON as dict
 
@@ -10,23 +10,93 @@ except ImportError:
 
 import json
 import re
+import sys
 
 
-__all__ = ('SimpleHttpFetchBadStatus', 'parseURL', 'getConnection', 'getRequestData', 'getRequestDataAsJson', 'fetchUrl', 'fetchUrlAsJson')
+__all__ = ('SimpleHttpFetchBadStatus', 'parseURL', 'getConnection', 'getRequestData', 'getRequestDataAsJson', 'fetchUrl', 'fetchUrlAsJson', 'fetchUrlRaw')
 
-__version__ = '1.1.2'
+__version__ = '2.0.0'
 
-__version_tuple__ = (1, 1, 2)
+__version_tuple__ = (2, 0, 0)
 
 DEFAULT_USER_AGENT = 'SimpleHttpFetch %s' %(__version__,)
 
-HTTP_PROTOCOL_URL_PATTERN = re.compile('^(?P<protocol>[h][t][t][p][s]{0,1}[:][/]{2}){0,1}(?P<domain>[a-zA-Z0-9\.-]+){1}(?P<port>:[\d]+){0,1}(?P<rel_uri>[/].*){0,1}$')
+HTTP_PROTOCOL_URL_PATTERN = re.compile('^(?P<protocol>[h][t][t][p][s]{0,1}[:][/]{2}){0,1}(?P<domain>[a-zA-Z0-9\.\-\_]+){1}(?P<port>:[\d]+){0,1}(?P<rel_uri>[/].*){0,1}$')
+
+
+NO_DECODE = 'nodecode'
+
+CHARSET_PATTERN = re.compile('.*;[ ]*charset=(?P<charset>.*)')
 
 
 ############################
-#   Methods                #
+#   Methods - Main         #
 ############################
 
+
+
+
+def fetchUrl(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8'):
+    '''
+        fetchUrl - Fetches the contents of a url.
+
+        Will follow relative redirects via Location header or 301 status.
+
+        @param httpMethod <str> - HTTP Method (default GET)
+        @param userAgent <str>  - User agent to provide, defaults to SimpleHttpFetch <version>
+        @param defaultEncoding <str> - default utf-8. Encoding to use if one is not specified in headers. If set to "nodecode", the results will not be decoded regardless of headers (use for binary data)
+
+        @return <str> - Web page contents
+
+        @raises SimpleHttpFetchBadStatus If page does not return status 200 (success)
+    '''
+    connection = getConnection(url)
+
+    return getRequestData(connection, url, httpMethod, userAgent, defaultEncoding)
+
+
+def fetchUrlRaw(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
+    '''
+        fetchUrlRaw - Fetches the contents of a url without decoding the data.
+
+        Will follow relative redirects via Location header or 301 status.
+
+        @param httpMethod <str> - HTTP Method (default GET)
+        @param userAgent <str>  - User agent to provide, defaults to SimpleHttpFetch <version>
+
+        @return <bytes> - Web page contents, unencoded.
+
+        @raises SimpleHttpFetchBadStatus If page does not return status 200 (success)
+    '''
+    connection = getConnection(url)
+
+    return getRequestData(connection, url, httpMethod, userAgent, NO_DECODE)
+    
+
+def fetchUrlAsJson(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8'):
+    '''
+        fetchUrl - Fetches the contents of a url and converts the JSON to a python dictionary.
+
+        Will follow relative redirects via Location header or 301 status.
+
+        @param httpMethod <str> - HTTP Method (default GET)
+        @param userAgent <str>  - User agent to provide, defaults to SimpleHttpFetch <version>
+        @param defaultEncoding <str> - default utf-8. Encoding to use if one is not specified in headers. If set to "nodecode", the results will not be decoded regardless of headers (use for binary data)
+
+        @return <dict> - Dictionary of parsed JSON on page
+
+        @raises ValueError if webpage contents are not JSON-compatible
+        @raises SimpleHttpFetchBadStatus If page does not return status 200 (success)
+    '''
+    connection = getConnection(url)
+
+    return getRequestDataAsJson(connection, url, httpMethod, userAgent, defaultEncoding)
+
+
+
+############################
+#   Methods - Helpers      #
+############################
 
 def parseURL(url):
     '''
@@ -78,7 +148,7 @@ def getConnection(url):
 
     return connection
 
-def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
+def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8'):
     '''
         getRequestData - Given a connection, fetch a URL and return a string of the contents. Use this to make multiple requests instead of fetchUrl to the same server, as it allows you to reuse a connection.
         
@@ -88,6 +158,7 @@ def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGE
         @parma url <str> - Url to fetch
         @param httpMethod <str> - An http method. Probably GET.
         @param userAgent <str>  - Your user agent. Defaults to SimpleHttpFetch <version>
+        @param defaultEncoding <str> - default utf-8. Encoding to use if one is not specified in headers. If set to "nodecode", the results will not be decoded regardless of headers (use for binary data)
 
         @return <str> - Web page contents
 
@@ -96,7 +167,7 @@ def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGE
     if not url.startswith('/'):
         url = parseURL(url)['rel_uri']
 
-    connection.request(httpMethod, url, '',{'User-agent': 'FetchURL'})
+    connection.request(httpMethod, url, '',{'User-agent': userAgent})
     response = connection.getresponse()
     if response.status == 301:
         try:
@@ -105,7 +176,7 @@ def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGE
             pass
         locationHeader = response.getheader('Location')
         if locationHeader.startswith('/'): # Follow a relative redirect, but dont try to follow an absolute
-            return getRequestData(connection, locationHeader, httpMethod)
+            return getRequestData(connection, locationHeader, httpMethod, userAgent, defaultEncoding)
     if response.status != 200:
         try:
             response.read() # Clear buffer if present
@@ -115,13 +186,20 @@ def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGE
         toRaise.statusCode = response.status
         raise toRaise
 
+    
     data = response.read()
-
-    if type(data) == str:
+    if defaultEncoding == NO_DECODE:
         return data
-    return data.decode('utf-8')
 
-def getRequestDataAsJson(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
+    encoding = extractEncodingFromHeaders(response) or defaultEncoding or sys.getdefaultencoding()
+
+    if encoding == NO_DECODE:
+        return data
+
+
+    return data.decode(encoding)
+
+def getRequestDataAsJson(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8'):
     '''
         getRequestDataAsJson - Given a connection, fetch a URL and return a string of the contents. Use this to make multiple requests to the same server instead of fetchUrlAsJson, as it allows you to reuse a connection.
         
@@ -131,13 +209,14 @@ def getRequestDataAsJson(connection, url, httpMethod='GET', userAgent=DEFAULT_US
         @param url <str> - Url to fetch
         @param httpMethod <str> - An http method. Probably GET.
         @param userAgent <str> - Your user agent. Defaults to SimpleHttpFetch <version>
+        @param defaultEncoding <str> - default utf-8. Encoding to use if one is not specified in headers. If set to "nodecode", the results will not be decoded regardless of headers (use for binary data)
 
         @return <dict> - Dictionary of parsed JSON on page
 
         @raises ValueError if webpage contents are not JSON-compatible
         @raises SimpleHttpFetchBadStatus If page does not return status 200 (success)
     '''
-    data = getRequestData(connection, url, httpMethod)
+    data = getRequestData(connection, url, httpMethod, userAgent, defaultEncoding)
     if not data:
         raise Exception('Server at "%s" returned no data' %(url,))
 
@@ -149,41 +228,21 @@ def getRequestDataAsJson(connection, url, httpMethod='GET', userAgent=DEFAULT_US
     return ret
 
 
-def fetchUrl(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
+def extractEncodingFromHeaders(response):
     '''
-        fetchUrl - Fetches the contents of a url.
+        extractEncodingFromHeaders - Extract encoding if present from "Content-type" header.
 
-        Will follow relative redirects via Location header or 301 status.
+        @param response - Response object
 
-        @param httpMethod <str> - HTTP Method (default GET)
-        @param userAgent <str>  - User agent to provide, defaults to SimpleHttpFetch <version>
-
-        @return <str> - Web page contents
-
-        @raises SimpleHttpFetchBadStatus If page does not return status 200 (success)
+        @return - String of encoding, or None if no encoding found.
     '''
-    connection = getConnection(url)
-
-    return getRequestData(connection, url, httpMethod, userAgent)
-
-def fetchUrlAsJson(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
-    '''
-        fetchUrl - Fetches the contents of a url and converts the JSON to a python dictionary.
-
-        Will follow relative redirects via Location header or 301 status.
-
-        @param httpMethod <str> - HTTP Method (default GET)
-        @param userAgent <str>  - User agent to provide, defaults to SimpleHttpFetch <version>
-
-        @return <dict> - Dictionary of parsed JSON on page
-
-        @raises ValueError if webpage contents are not JSON-compatible
-        @raises SimpleHttpFetchBadStatus If page does not return status 200 (success)
-    '''
-    connection = getConnection(url)
-
-    return getRequestDataAsJson(connection, url, httpMethod, userAgent)
-
+    contentTypeHeader = response.getheader('Content-type')
+    if contentTypeHeader:
+        charSetMatch = CHARSET_PATTERN.match(contentTypeHeader)
+        if charSetMatch:
+            return charSetMatch.groupdict()['charset'].lower()
+    return None
+            
 
 ############################
 #   Exceptions             #
