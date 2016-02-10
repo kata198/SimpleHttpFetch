@@ -14,13 +14,13 @@ import re
 
 __all__ = ('SimpleHttpFetchBadStatus', 'parseURL', 'getConnection', 'getRequestData', 'getRequestDataAsJson', 'fetchUrl', 'fetchUrlAsJson')
 
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 
-__version_tuple__ = (1, 0, 1)
+__version_tuple__ = (1, 0, 2)
 
 DEFAULT_USER_AGENT = 'SimpleHttpFetch %s' %(__version__,)
 
-HTTP_PROTOCOL_URL_PATTERN = re.compile('^(?P<protocol>[h][t][t][p][s]{0,1}[:][/]{2}){0,1}(?P<domain>[a-zA-Z0-9\.]+){1}(?P<port>:[\d]+){0,1}(?P<rel_uri>[/].*){0,1}$')
+HTTP_PROTOCOL_URL_PATTERN = re.compile('^(?P<protocol>[h][t][t][p][s]{0,1}[:][/]{2}){0,1}(?P<domain>[a-zA-Z0-9\.-]+){1}(?P<port>:[\d]+){0,1}(?P<rel_uri>[/].*){0,1}$')
 
 
 ############################
