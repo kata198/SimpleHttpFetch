@@ -1,0 +1,6 @@
+* 2.0.0 - Feb 10 2016
+- FIX: Ensure user-agent is always passed along as requested
+- FEATURE: Support reading "Content-type" header to infer encoding
+- FEATURE: Support providing a "defaultEncoding" param to specify encoding
+- FEATURE: Add "fetchUrlRaw" method to return raw bytes. Also can provide "nodecode" as "defaultEncoding" to other functions to fetch raw bytes
+
