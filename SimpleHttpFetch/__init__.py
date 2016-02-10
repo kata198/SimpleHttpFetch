@@ -14,9 +14,9 @@ import re
 
 __all__ = ('SimpleHttpFetchBadStatus', 'parseURL', 'getConnection', 'getRequestData', 'getRequestDataAsJson', 'fetchUrl', 'fetchUrlAsJson')
 
-__version__ = '1.0.2'
+__version__ = '1.1.2'
 
-__version_tuple__ = (1, 0, 2)
+__version_tuple__ = (1, 1, 2)
 
 DEFAULT_USER_AGENT = 'SimpleHttpFetch %s' %(__version__,)
 
