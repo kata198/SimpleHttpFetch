@@ -15,9 +15,9 @@ import sys
 
 __all__ = ('SimpleHttpFetchBadStatus', 'parseURL', 'getConnection', 'getRequestData', 'getRequestDataAsJson', 'fetchUrl', 'fetchUrlAsJson', 'fetchUrlRaw')
 
-__version__ = '2.0.0'
+__version__ = '3.0.0'
 
-__version_tuple__ = (2, 0, 0)
+__version_tuple__ = (3, 0, 0)
 
 DEFAULT_USER_AGENT = 'SimpleHttpFetch %s' %(__version__,)
 
@@ -36,7 +36,7 @@ CHARSET_PATTERN = re.compile('.*;[ ]*charset=(?P<charset>.*)')
 
 
 
-def fetchUrl(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8'):
+def fetchUrl(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8', headers=None):
     '''
         fetchUrl - Fetches the contents of a url.
 
@@ -45,6 +45,7 @@ def fetchUrl(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncodin
         @param httpMethod <str> - HTTP Method (default GET)
         @param userAgent <str>  - User agent to provide, defaults to SimpleHttpFetch <version>
         @param defaultEncoding <str> - default utf-8. Encoding to use if one is not specified in headers. If set to "nodecode", the results will not be decoded regardless of headers (use for binary data)
+        @param headers <None/dict> - overrides to default headers to send. keys is header name, value is header value.
 
         @return <str> - Web page contents
 
@@ -52,10 +53,10 @@ def fetchUrl(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncodin
     '''
     connection = getConnection(url)
 
-    return getRequestData(connection, url, httpMethod, userAgent, defaultEncoding)
+    return getRequestData(connection, url, httpMethod, userAgent, defaultEncoding, headers)
 
 
-def fetchUrlRaw(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
+def fetchUrlRaw(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, headers=None):
     '''
         fetchUrlRaw - Fetches the contents of a url without decoding the data.
 
@@ -63,6 +64,7 @@ def fetchUrlRaw(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
 
         @param httpMethod <str> - HTTP Method (default GET)
         @param userAgent <str>  - User agent to provide, defaults to SimpleHttpFetch <version>
+        @param headers <None/dict> - overrides to default headers to send. keys is header name, value is header value.
 
         @return <bytes> - Web page contents, unencoded.
 
@@ -70,10 +72,10 @@ def fetchUrlRaw(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT):
     '''
     connection = getConnection(url)
 
-    return getRequestData(connection, url, httpMethod, userAgent, NO_DECODE)
+    return getRequestData(connection, url, httpMethod, userAgent, NO_DECODE, headers)
     
 
-def fetchUrlAsJson(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8'):
+def fetchUrlAsJson(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8', headers=None):
     '''
         fetchUrl - Fetches the contents of a url and converts the JSON to a python dictionary.
 
@@ -82,6 +84,7 @@ def fetchUrlAsJson(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultE
         @param httpMethod <str> - HTTP Method (default GET)
         @param userAgent <str>  - User agent to provide, defaults to SimpleHttpFetch <version>
         @param defaultEncoding <str> - default utf-8. Encoding to use if one is not specified in headers. If set to "nodecode", the results will not be decoded regardless of headers (use for binary data)
+        @param headers <None/dict> - overrides to default headers to send. keys is header name, value is header value.
 
         @return <dict> - Dictionary of parsed JSON on page
 
@@ -90,7 +93,7 @@ def fetchUrlAsJson(url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultE
     '''
     connection = getConnection(url)
 
-    return getRequestDataAsJson(connection, url, httpMethod, userAgent, defaultEncoding)
+    return getRequestDataAsJson(connection, url, httpMethod, userAgent, defaultEncoding, headers)
 
 
 
@@ -148,7 +151,7 @@ def getConnection(url):
 
     return connection
 
-def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8'):
+def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8', headers=None):
     '''
         getRequestData - Given a connection, fetch a URL and return a string of the contents. Use this to make multiple requests instead of fetchUrl to the same server, as it allows you to reuse a connection.
         
@@ -159,6 +162,7 @@ def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGE
         @param httpMethod <str> - An http method. Probably GET.
         @param userAgent <str>  - Your user agent. Defaults to SimpleHttpFetch <version>
         @param defaultEncoding <str> - default utf-8. Encoding to use if one is not specified in headers. If set to "nodecode", the results will not be decoded regardless of headers (use for binary data)
+        @param headers <None/dict> - overrides to default headers to send. keys is header name, value is header value.
 
         @return <str> - Web page contents
 
@@ -167,7 +171,12 @@ def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGE
     if not url.startswith('/'):
         url = parseURL(url)['rel_uri']
 
-    connection.request(httpMethod, url, '',{'User-agent': userAgent})
+    if not headers:
+        headers = {}
+    if 'User-agent' not in headers:
+        headers['User-agent'] = userAgent
+
+    connection.request(httpMethod, url, '', headers)
     response = connection.getresponse()
     if response.status == 301:
         try:
@@ -199,7 +208,7 @@ def getRequestData(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGE
 
     return data.decode(encoding)
 
-def getRequestDataAsJson(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8'):
+def getRequestDataAsJson(connection, url, httpMethod='GET', userAgent=DEFAULT_USER_AGENT, defaultEncoding='utf-8', headers=None):
     '''
         getRequestDataAsJson - Given a connection, fetch a URL and return a string of the contents. Use this to make multiple requests to the same server instead of fetchUrlAsJson, as it allows you to reuse a connection.
         
@@ -210,13 +219,14 @@ def getRequestDataAsJson(connection, url, httpMethod='GET', userAgent=DEFAULT_US
         @param httpMethod <str> - An http method. Probably GET.
         @param userAgent <str> - Your user agent. Defaults to SimpleHttpFetch <version>
         @param defaultEncoding <str> - default utf-8. Encoding to use if one is not specified in headers. If set to "nodecode", the results will not be decoded regardless of headers (use for binary data)
+        @param headers <None/dict> - overrides to default headers to send. keys is header name, value is header value.
 
         @return <dict> - Dictionary of parsed JSON on page
 
         @raises ValueError if webpage contents are not JSON-compatible
         @raises SimpleHttpFetchBadStatus If page does not return status 200 (success)
     '''
-    data = getRequestData(connection, url, httpMethod, userAgent, defaultEncoding)
+    data = getRequestData(connection, url, httpMethod, userAgent, defaultEncoding, headers)
     if not data:
         raise Exception('Server at "%s" returned no data' %(url,))
 

@@ -52,6 +52,12 @@ SimpleHttpFetch will check for the "charset" defined in Content-type header, and
 To fetch binary data, use the "fetchUrlRaw" method, or pass "nodecode" as the "defaultEncoding" paramater. Use this mode to fetch images, video, tarballs, etc.
 
 
+Extra Headers
+-------------
+
+The automatic headers needed for an HTTP/HTTPS request are provided by default, but you may override or provide your own headers through the "headers" parameter to most functions.
+
+
 Full Documentation
 ------------------
 

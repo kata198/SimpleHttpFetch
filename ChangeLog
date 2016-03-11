@@ -1,3 +1,6 @@
+* 3.0.0 - Mar 11 2016
+- Add "headers" to various functions, which allow an optional dict of HTTP header overrides.
+
 * 2.0.0 - Feb 10 2016
 - FIX: Ensure user-agent is always passed along as requested
 - FEATURE: Support reading "Content-type" header to infer encoding
