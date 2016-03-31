@@ -1,3 +1,7 @@
+* 4.0.0 - Mar 31 2016
+- Follow absolute redirects up to a maximum depth (specified by
+SimpleHttpFetch.MAX_REDIRECT_DEPTH (default 15) ). Otherwise, raise
+
 * 3.0.0 - Mar 11 2016
 - Add "headers" to various functions, which allow an optional dict of HTTP header overrides.
 

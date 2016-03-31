@@ -7,9 +7,9 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>SimpleHttpFetch</strong></big></big> (version 3.0.0)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>SimpleHttpFetch</strong></big></big> (version 4.0.0)</font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href="SimpleHttpFetch.html">index</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"></font></td></tr></table>
     <p><tt>#&nbsp;Copyright&nbsp;(c)&nbsp;2015-2016&nbsp;Tim&nbsp;Savannah&nbsp;under&nbsp;terms&nbsp;of&nbsp;LGPLv2.<br>
 #<br>
 #&nbsp;&nbsp;SimpleHttpFetch&nbsp;supports&nbsp;through&nbsp;the&nbsp;most&nbsp;simple&nbsp;interface&nbsp;possible&nbsp;fetching&nbsp;of&nbsp;URLs&nbsp;as&nbsp;strings&nbsp;or&nbsp;JSON&nbsp;as&nbsp;dict</tt></p>
@@ -32,6 +32,7 @@
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="SimpleHttpFetch.html#SimpleHttpFetchBadStatus">SimpleHttpFetchBadStatus</a>
+</font></dt><dt><font face="helvetica, arial"><a href="SimpleHttpFetch.html#SimpleHttpFetchTooManyRedirects">SimpleHttpFetchTooManyRedirects</a>
 </font></dt></dl>
 </dd>
 </dl>
@@ -97,6 +98,66 @@ Data descriptors inherited from <a href="exceptions.html#BaseException">exceptio
 </dl>
 <dl><dt><strong>message</strong></dt>
 </dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SimpleHttpFetchTooManyRedirects">class <strong>SimpleHttpFetchTooManyRedirects</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Too&nbsp;many&nbsp;redirects&nbsp;have&nbsp;been&nbsp;followed&nbsp;and&nbsp;we've&nbsp;given&nbsp;up.&nbsp;The&nbsp;message&nbsp;will&nbsp;contain&nbsp;after&nbsp;the&nbsp;first&nbsp;newline&nbsp;character&nbsp;the&nbsp;list&nbsp;of&nbsp;urls&nbsp;fetched.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="SimpleHttpFetch.html#SimpleHttpFetchTooManyRedirects">SimpleHttpFetchTooManyRedirects</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__init__"><strong>__init__</strong></a>(self, urls)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#SimpleHttpFetchTooManyRedirects-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchTooManyRedirects-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchTooManyRedirects-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchTooManyRedirects-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchTooManyRedirects-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchTooManyRedirects-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchTooManyRedirects-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#SimpleHttpFetchTooManyRedirects-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="SimpleHttpFetchTooManyRedirects-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
@@ -104,9 +165,9 @@ Data descriptors inherited from <a href="exceptions.html#BaseException">exceptio
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-fetchUrl"><strong>fetchUrl</strong></a>(url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 3.0.0'</font>, defaultEncoding<font color="#909090">='utf-8'</font>, headers<font color="#909090">=None</font>)</dt><dd><tt>fetchUrl&nbsp;-&nbsp;Fetches&nbsp;the&nbsp;contents&nbsp;of&nbsp;a&nbsp;url.<br>
+<td width="100%"><dl><dt><a name="-fetchUrl"><strong>fetchUrl</strong></a>(url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 4.0.0'</font>, defaultEncoding<font color="#909090">='utf-8'</font>, headers<font color="#909090">=None</font>)</dt><dd><tt>fetchUrl&nbsp;-&nbsp;Fetches&nbsp;the&nbsp;contents&nbsp;of&nbsp;a&nbsp;url.<br>
 &nbsp;<br>
-Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
+Will&nbsp;follow&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
 &nbsp;<br>
 @param&nbsp;httpMethod&nbsp;&lt;str&gt;&nbsp;-&nbsp;HTTP&nbsp;Method&nbsp;(default&nbsp;GET)<br>
 @param&nbsp;userAgent&nbsp;&lt;str&gt;&nbsp;&nbsp;-&nbsp;User&nbsp;agent&nbsp;to&nbsp;provide,&nbsp;defaults&nbsp;to&nbsp;SimpleHttpFetch&nbsp;&lt;version&gt;<br>
@@ -116,9 +177,9 @@ Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header
 @return&nbsp;&lt;str&gt;&nbsp;-&nbsp;Web&nbsp;page&nbsp;contents<br>
 &nbsp;<br>
 @raises&nbsp;<a href="#SimpleHttpFetchBadStatus">SimpleHttpFetchBadStatus</a>&nbsp;If&nbsp;page&nbsp;does&nbsp;not&nbsp;return&nbsp;status&nbsp;200&nbsp;(success)</tt></dd></dl>
- <dl><dt><a name="-fetchUrlAsJson"><strong>fetchUrlAsJson</strong></a>(url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 3.0.0'</font>, defaultEncoding<font color="#909090">='utf-8'</font>, headers<font color="#909090">=None</font>)</dt><dd><tt>fetchUrl&nbsp;-&nbsp;Fetches&nbsp;the&nbsp;contents&nbsp;of&nbsp;a&nbsp;url&nbsp;and&nbsp;converts&nbsp;the&nbsp;JSON&nbsp;to&nbsp;a&nbsp;python&nbsp;dictionary.<br>
+ <dl><dt><a name="-fetchUrlAsJson"><strong>fetchUrlAsJson</strong></a>(url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 4.0.0'</font>, defaultEncoding<font color="#909090">='utf-8'</font>, headers<font color="#909090">=None</font>)</dt><dd><tt>fetchUrl&nbsp;-&nbsp;Fetches&nbsp;the&nbsp;contents&nbsp;of&nbsp;a&nbsp;url&nbsp;and&nbsp;converts&nbsp;the&nbsp;JSON&nbsp;to&nbsp;a&nbsp;python&nbsp;dictionary.<br>
 &nbsp;<br>
-Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
+Will&nbsp;follow&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
 &nbsp;<br>
 @param&nbsp;httpMethod&nbsp;&lt;str&gt;&nbsp;-&nbsp;HTTP&nbsp;Method&nbsp;(default&nbsp;GET)<br>
 @param&nbsp;userAgent&nbsp;&lt;str&gt;&nbsp;&nbsp;-&nbsp;User&nbsp;agent&nbsp;to&nbsp;provide,&nbsp;defaults&nbsp;to&nbsp;SimpleHttpFetch&nbsp;&lt;version&gt;<br>
@@ -129,9 +190,9 @@ Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header
 &nbsp;<br>
 @raises&nbsp;ValueError&nbsp;if&nbsp;webpage&nbsp;contents&nbsp;are&nbsp;not&nbsp;JSON-compatible<br>
 @raises&nbsp;<a href="#SimpleHttpFetchBadStatus">SimpleHttpFetchBadStatus</a>&nbsp;If&nbsp;page&nbsp;does&nbsp;not&nbsp;return&nbsp;status&nbsp;200&nbsp;(success)</tt></dd></dl>
- <dl><dt><a name="-fetchUrlRaw"><strong>fetchUrlRaw</strong></a>(url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 3.0.0'</font>, headers<font color="#909090">=None</font>)</dt><dd><tt>fetchUrlRaw&nbsp;-&nbsp;Fetches&nbsp;the&nbsp;contents&nbsp;of&nbsp;a&nbsp;url&nbsp;without&nbsp;decoding&nbsp;the&nbsp;data.<br>
+ <dl><dt><a name="-fetchUrlRaw"><strong>fetchUrlRaw</strong></a>(url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 4.0.0'</font>, headers<font color="#909090">=None</font>)</dt><dd><tt>fetchUrlRaw&nbsp;-&nbsp;Fetches&nbsp;the&nbsp;contents&nbsp;of&nbsp;a&nbsp;url&nbsp;without&nbsp;decoding&nbsp;the&nbsp;data.<br>
 &nbsp;<br>
-Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
+Will&nbsp;follow&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
 &nbsp;<br>
 @param&nbsp;httpMethod&nbsp;&lt;str&gt;&nbsp;-&nbsp;HTTP&nbsp;Method&nbsp;(default&nbsp;GET)<br>
 @param&nbsp;userAgent&nbsp;&lt;str&gt;&nbsp;&nbsp;-&nbsp;User&nbsp;agent&nbsp;to&nbsp;provide,&nbsp;defaults&nbsp;to&nbsp;SimpleHttpFetch&nbsp;&lt;version&gt;<br>
@@ -143,21 +204,22 @@ Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header
  <dl><dt><a name="-getConnection"><strong>getConnection</strong></a>(url)</dt><dd><tt>getConnection&nbsp;-&nbsp;Get&nbsp;a&nbsp;connection&nbsp;object&nbsp;given&nbsp;a&nbsp;url.&nbsp;Supports&nbsp;http&nbsp;and&nbsp;https<br>
 &nbsp;<br>
 @return&nbsp;-&nbsp;Connection</tt></dd></dl>
- <dl><dt><a name="-getRequestData"><strong>getRequestData</strong></a>(connection, url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 3.0.0'</font>, defaultEncoding<font color="#909090">='utf-8'</font>, headers<font color="#909090">=None</font>)</dt><dd><tt>getRequestData&nbsp;-&nbsp;Given&nbsp;a&nbsp;connection,&nbsp;fetch&nbsp;a&nbsp;URL&nbsp;and&nbsp;return&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;contents.&nbsp;Use&nbsp;this&nbsp;to&nbsp;make&nbsp;multiple&nbsp;requests&nbsp;instead&nbsp;of&nbsp;fetchUrl&nbsp;to&nbsp;the&nbsp;same&nbsp;server,&nbsp;as&nbsp;it&nbsp;allows&nbsp;you&nbsp;to&nbsp;reuse&nbsp;a&nbsp;connection.<br>
+ <dl><dt><a name="-getRequestData"><strong>getRequestData</strong></a>(connection, url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 4.0.0'</font>, defaultEncoding<font color="#909090">='utf-8'</font>, headers<font color="#909090">=None</font>, _depth<font color="#909090">=None</font>)</dt><dd><tt>getRequestData&nbsp;-&nbsp;Given&nbsp;a&nbsp;connection,&nbsp;fetch&nbsp;a&nbsp;URL&nbsp;and&nbsp;return&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;contents.&nbsp;Use&nbsp;this&nbsp;to&nbsp;make&nbsp;multiple&nbsp;requests&nbsp;instead&nbsp;of&nbsp;fetchUrl&nbsp;to&nbsp;the&nbsp;same&nbsp;server,&nbsp;as&nbsp;it&nbsp;allows&nbsp;you&nbsp;to&nbsp;reuse&nbsp;a&nbsp;connection.<br>
 &nbsp;<br>
-Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
+Will&nbsp;follow&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
 &nbsp;<br>
 @param&nbsp;connection&nbsp;&lt;obj&gt;&nbsp;-&nbsp;return&nbsp;of&nbsp;getConnection&nbsp;function<br>
 @parma&nbsp;url&nbsp;&lt;str&gt;&nbsp;-&nbsp;Url&nbsp;to&nbsp;fetch<br>
 @param&nbsp;httpMethod&nbsp;&lt;str&gt;&nbsp;-&nbsp;An&nbsp;http&nbsp;method.&nbsp;Probably&nbsp;GET.<br>
 @param&nbsp;userAgent&nbsp;&lt;str&gt;&nbsp;&nbsp;-&nbsp;Your&nbsp;user&nbsp;agent.&nbsp;Defaults&nbsp;to&nbsp;SimpleHttpFetch&nbsp;&lt;version&gt;<br>
 @param&nbsp;defaultEncoding&nbsp;&lt;str&gt;&nbsp;-&nbsp;default&nbsp;utf-8.&nbsp;Encoding&nbsp;to&nbsp;use&nbsp;if&nbsp;one&nbsp;is&nbsp;not&nbsp;specified&nbsp;in&nbsp;headers.&nbsp;If&nbsp;set&nbsp;to&nbsp;"nodecode",&nbsp;the&nbsp;results&nbsp;will&nbsp;not&nbsp;be&nbsp;decoded&nbsp;regardless&nbsp;of&nbsp;headers&nbsp;(use&nbsp;for&nbsp;binary&nbsp;data)<br>
-@param&nbsp;headers&nbsp;&lt;None/dict&gt;&nbsp;-&nbsp;overrides&nbsp;to&nbsp;default&nbsp;headers&nbsp;to&nbsp;send.&nbsp;keys&nbsp;is&nbsp;header&nbsp;name,&nbsp;value&nbsp;is&nbsp;header&nbsp;value.<br>
+@param&nbsp;headers&nbsp;&lt;None/dict&gt;&nbsp;-&nbsp;overrides&nbsp;to&nbsp;default&nbsp;headers&nbsp;to&nbsp;send.&nbsp;keys&nbsp;is&nbsp;header&nbsp;name,&nbsp;value&nbsp;is&nbsp;header&nbsp;value<br>
+@param&nbsp;_depth&nbsp;&lt;None/list&gt;&nbsp;-&nbsp;If&nbsp;you&nbsp;pass&nbsp;in&nbsp;a&nbsp;list,&nbsp;you&nbsp;can&nbsp;check&nbsp;that&nbsp;list&nbsp;after&nbsp;the&nbsp;call&nbsp;(the&nbsp;function&nbsp;will&nbsp;modify&nbsp;it)&nbsp;to&nbsp;see&nbsp;if&nbsp;any&nbsp;redirects&nbsp;(301's)&nbsp;were&nbsp;followed.&nbsp;Each&nbsp;url&nbsp;fetched&nbsp;will&nbsp;have&nbsp;an&nbsp;entry,&nbsp;so&nbsp;len(_depth)&nbsp;==&nbsp;1&nbsp;means&nbsp;no&nbsp;redirects&nbsp;were&nbsp;followed.<br>
 &nbsp;<br>
 @return&nbsp;&lt;str&gt;&nbsp;-&nbsp;Web&nbsp;page&nbsp;contents<br>
 &nbsp;<br>
 @raises&nbsp;<a href="#SimpleHttpFetchBadStatus">SimpleHttpFetchBadStatus</a>&nbsp;If&nbsp;page&nbsp;does&nbsp;not&nbsp;return&nbsp;status&nbsp;200&nbsp;(success)</tt></dd></dl>
- <dl><dt><a name="-getRequestDataAsJson"><strong>getRequestDataAsJson</strong></a>(connection, url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 3.0.0'</font>, defaultEncoding<font color="#909090">='utf-8'</font>, headers<font color="#909090">=None</font>)</dt><dd><tt>getRequestDataAsJson&nbsp;-&nbsp;Given&nbsp;a&nbsp;connection,&nbsp;fetch&nbsp;a&nbsp;URL&nbsp;and&nbsp;return&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;contents.&nbsp;Use&nbsp;this&nbsp;to&nbsp;make&nbsp;multiple&nbsp;requests&nbsp;to&nbsp;the&nbsp;same&nbsp;server&nbsp;instead&nbsp;of&nbsp;fetchUrlAsJson,&nbsp;as&nbsp;it&nbsp;allows&nbsp;you&nbsp;to&nbsp;reuse&nbsp;a&nbsp;connection.<br>
+ <dl><dt><a name="-getRequestDataAsJson"><strong>getRequestDataAsJson</strong></a>(connection, url, httpMethod<font color="#909090">='GET'</font>, userAgent<font color="#909090">='SimpleHttpFetch 4.0.0'</font>, defaultEncoding<font color="#909090">='utf-8'</font>, headers<font color="#909090">=None</font>)</dt><dd><tt>getRequestDataAsJson&nbsp;-&nbsp;Given&nbsp;a&nbsp;connection,&nbsp;fetch&nbsp;a&nbsp;URL&nbsp;and&nbsp;return&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;contents.&nbsp;Use&nbsp;this&nbsp;to&nbsp;make&nbsp;multiple&nbsp;requests&nbsp;to&nbsp;the&nbsp;same&nbsp;server&nbsp;instead&nbsp;of&nbsp;fetchUrlAsJson,&nbsp;as&nbsp;it&nbsp;allows&nbsp;you&nbsp;to&nbsp;reuse&nbsp;a&nbsp;connection.<br>
 &nbsp;<br>
 Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header&nbsp;or&nbsp;301&nbsp;status.<br>
 &nbsp;<br>
@@ -188,7 +250,7 @@ Will&nbsp;follow&nbsp;relative&nbsp;redirects&nbsp;via&nbsp;Location&nbsp;header
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>__all__</strong> = ('SimpleHttpFetchBadStatus', 'parseURL', 'getConnection', 'getRequestData', 'getRequestDataAsJson', 'fetchUrl', 'fetchUrlAsJson', 'fetchUrlRaw')<br>
-<strong>__version__</strong> = '3.0.0'<br>
-<strong>__version_tuple__</strong> = (3, 0, 0)</td></tr></table>
+<td width="100%"><strong>__all__</strong> = ('SimpleHttpFetchBadStatus', 'SimpleHttpFetchTooManyRedirects', 'parseURL', 'getConnection', 'getRequestData', 'getRequestDataAsJson', 'fetchUrl', 'fetchUrlAsJson', 'fetchUrlRaw')<br>
+<strong>__version__</strong> = '4.0.0'<br>
+<strong>__version_tuple__</strong> = (4, 0, 0)</td></tr></table>
 </body></html>

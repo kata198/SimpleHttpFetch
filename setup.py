@@ -23,7 +23,7 @@ if __name__ == '__main__':
         long_description = summary
 
     setup(name='SimpleHttpFetch',
-            version='3.0.0',
+            version='4.0.0',
             packages=['SimpleHttpFetch'],
             author='Tim Savannah',
             author_email='kata198@gmail.com',
@@ -33,7 +33,7 @@ if __name__ == '__main__':
             description=summary,
             long_description=long_description,
             license='LGPLv2',
-            keywords=['fetch', 'url', 'GET', 'http', 'html', 'https', 'string', 'json', 'dict', 'as', 'simple', 'easy', 'basic', 'request', 'method', 'str', 'fetchUrl', 'fetchUrlAsJson', 'redirect'],
+            keywords=['fetch', 'url', 'GET', 'http', 'html', 'https', 'string', 'json', 'dict', 'as', 'simple', 'easy', 'basic', 'request', 'method', 'str', 'fetchUrl', 'fetchUrlAsJson', 'redirect', '301', 'absolute', 'relative'],
             classifiers=['Development Status :: 5 - Production/Stable',
                          'Programming Language :: Python',
                          'License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)',
